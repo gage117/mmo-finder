@@ -51,6 +51,12 @@ const mmoSchema = new Schema({
       price: Number
     }],
   },
+  ratings: {
+    type: [{
+      reviewer: String,
+      score: Number
+    }],
+  },
   system_requirements: {
     type: [{
       requirement_name: String,
