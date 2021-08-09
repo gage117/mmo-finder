@@ -57,6 +57,9 @@ const mmoSchema = new Schema({
       score: Number
     }],
   },
+  average_rating: {
+    type: Number,
+  },
   system_requirements: {
     type: [{
       requirement_name: String,
@@ -67,6 +70,11 @@ const mmoSchema = new Schema({
     type: [String],
   },
 });
+
+mmoSchema.methods.calculateAverageRating = function() {
+  this.average_rating = this.ratings.reduce((a, b) => a.score + b.score) / this.ratings.length;
+  return this.average_rating;
+};
 
 const Mmo = mongoose.model("Mmo", mmoSchema);
 
