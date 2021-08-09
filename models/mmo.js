@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const mmoSchema = new Schema({
+  // Required
   name: {
     type: String,
     trim: true,
@@ -22,7 +23,8 @@ const mmoSchema = new Schema({
   },
   pay_model: {
     type: String,
-    required: "Enter a pay model for mmo"
+    required: "Enter a pay model for mmo",
+    validate: [(value) => ["Subscription", "Buy to Play", "Free to Play"].includes(value), "Value must be Subscription, Buy to Play, or Free to Play"]
   },
   platforms: {
     type: [String],
@@ -36,6 +38,7 @@ const mmoSchema = new Schema({
     type: Boolean,
     required: "PvP combat? true/false"
   },
+  //Not required
   developers: {
     type: [String]
   },
@@ -54,7 +57,7 @@ const mmoSchema = new Schema({
   ratings: {
     type: [{
       reviewer: String,
-      score: Number
+      rating: Number
     }],
   },
   average_rating: {
@@ -69,6 +72,7 @@ const mmoSchema = new Schema({
   tags: {
     type: [String],
   },
+  // TODO: DLCs?
 });
 
 mmoSchema.methods.calculateAverageRating = function() {
