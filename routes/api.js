@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Mmo = require("../models/mmo.js");
+const {Mmo} = require("../models");
 
 router.post("/api/mmo", ({ body }, res) => {
   Mmo.create(body)
