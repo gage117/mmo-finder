@@ -75,10 +75,11 @@ const mmoSchema = new Schema({
   // TODO: DLCs?
 });
 
-mmoSchema.methods.calculateAverageRating = function() {
-  this.average_rating = this.ratings.reduce((a, b) => a.score + b.score) / this.ratings.length;
-  return this.average_rating;
-};
+
+// mmoSchema.methods.calculateAverageRating = function() {
+//   this.average_rating = this.ratings.reduce((a, b) => a.score + b.score) / this.ratings.length;
+//   return this.average_rating;
+// };
 
 const Mmo = mongoose.model("Mmo", mmoSchema);
 

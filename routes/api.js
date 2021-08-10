@@ -1,6 +1,11 @@
 const router = require("express").Router();
 const {Mmo} = require("../models");
 
+const calculateAverageRating = (ratings) => {
+  average_rating = ratings.reduce((a, b) => a.score + b.score) / ratings.length;
+  return average_rating;
+};
+
 router.post("/api/mmo", ({ body }, res) => {
   Mmo.create(body)
     .then(dbMmo => {
