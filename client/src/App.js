@@ -6,7 +6,7 @@ function App() {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
-    API.get('/api')
+    API.get('/api/mmo')
       .then(res => {
         setGames(res);
       });
