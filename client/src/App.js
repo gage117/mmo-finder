@@ -6,8 +6,14 @@ function App() {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
-    API.get('/api/mmo')
+    // API.get('/mmo')
+    // .then(res => {
+    //   console.log(res)
+    //   setGames(res);
+    // });
+    fetch('http://localhost:3001/api/mmo')
       .then(res => {
+        console.log(res)
         setGames(res);
       });
   }, []);
