@@ -39,7 +39,8 @@ const mmoSeed = [
     pve: true,
     pvp: true,
     developers: ['ArenaNet'],
-    publishers: ['ArenaNet', 'NCSoft']
+    publishers: ['ArenaNet', 'NCSoft'],
+    tags: ['Story-Rich', 'Genre-bending', 'World Events', 'Level Scaling', 'Expansive PvP']
   },{
     name: 'World of Warcraft',
     description: 'The Big Cheese',
@@ -50,7 +51,8 @@ const mmoSeed = [
     pve: true,
     pvp: true,
     developers: ['Blizzard Entertainment'],
-    publishers: ['Blizzard Entertainment']
+    publishers: ['Blizzard Entertainment'],
+    tags: ['Grind-heavy', 'Rich End Game', 'Expansive PvP']
   },{
     name: 'The Elder Scrolls Online',
     description: 'A fancy story-based RPG',
@@ -61,7 +63,8 @@ const mmoSeed = [
     pve: true,
     pvp: true,
     developers: ['ZeniMax Online Studios'],
-    publishers: ['Bethesda Softworks']
+    publishers: ['Bethesda Softworks'],
+    tags: ['Story-Rich', 'World Events', 'Level-scaling']
   },
 ];
 
