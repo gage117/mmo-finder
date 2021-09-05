@@ -15,6 +15,7 @@ export default function GameGrid() {
         {
           name: 'Guild Wars 2',
           description: 'A pretty rad MMO',
+          logo: "https://res.cloudinary.com/gageeide/image/upload/v1630816875/mmo-finder/GW2Logo.png",
           genre: 'MMORPG',
           release_date: new Date('August 28, 2012'),
           pay_model: 'Buy To Play',
@@ -27,6 +28,7 @@ export default function GameGrid() {
         },{
           name: 'World of Warcraft',
           description: 'The Big Cheese',
+          logo: "https://res.cloudinary.com/gageeide/image/upload/v1630817482/mmo-finder/wowLogo.png",
           genre: 'MMORPG',
           release_date: new Date('November 23, 2004'),
           pay_model: 'Subscription',
@@ -39,6 +41,7 @@ export default function GameGrid() {
         },{
           name: 'The Elder Scrolls Online',
           description: 'A fancy story-based RPG',
+          logo: "https://res.cloudinary.com/gageeide/image/upload/v1630817874/mmo-finder/tesoLogo.jpg",
           genre: 'MMORPG',
           release_date: new Date('June 1, 2021'),
           pay_model: 'Buy to Play',
@@ -59,7 +62,7 @@ export default function GameGrid() {
             {games.map(game => {
                 return (
                     <Grid item>
-                        <GameCard game={game}></GameCard>
+                        <GameCard game={game} />
                     </Grid>
                 )
             })}
