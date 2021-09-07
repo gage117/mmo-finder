@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
+import SearchBar from '../SearchBar';
 import GameCard from "../GameCard";
+import NavBar from "../NavBar";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -87,7 +89,23 @@ export default function GameGrid() {
     ]);
   }, []);
 
-  return (
+  const tags = [];
+  if (games.length > 0) {
+    games.forEach(game => {
+      try {
+        game.tags.forEach(tag => {
+          if (!tags.includes(tag)) tags.push(tag)
+        })
+      } catch (e) {
+        console.log(e);
+        return;
+      }
+    })
+  }
+  console.log(tags)
+
+  return (<>
+    <SearchBar />
     <Grid 
       container 
       spacing={2} 
@@ -102,5 +120,5 @@ export default function GameGrid() {
         );
       })}
     </Grid>
-  );
+  </>);
 }
