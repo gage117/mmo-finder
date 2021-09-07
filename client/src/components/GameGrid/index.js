@@ -105,7 +105,7 @@ export default function GameGrid() {
   console.log(tags)
 
   return (<>
-    <SearchBar />
+    <SearchBar tags={tags} />
     <Grid 
       container 
       spacing={2} 

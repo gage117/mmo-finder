@@ -14,14 +14,18 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function SearchBar() {
+export default function SearchBar({tags}) {
   const classes = useStyles();
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
       <TextField className={classes.inputBackground} id="outlined-basic" label="Game Title" variant="filled" />
       <div>
-        <Chip />
+        {tags.map(tag => {
+            return (
+                <Chip label={tag} key={tag}/>
+            )
+        })}
       </div>
     </form>
   );
