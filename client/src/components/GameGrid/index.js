@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
-import SearchBar from '../SearchBar';
+import SearchBar from "../SearchBar";
 import GameCard from "../GameCard";
 import NavBar from "../NavBar";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: "0px 15px",
-    backgroundColor: '#fafafa',
-    height: '100%'
+    backgroundColor: "#fafafa",
+    height: "100%",
   },
 }));
 
@@ -83,7 +83,14 @@ export default function GameGrid() {
         pve: true,
         pvp: true,
         developers: ["Pearl Abyss"],
-        publishers: ["Pearl Abyss", "Kakao Games", "Kakao", "GameNet", "Koch Media", "GameOn Co., Ltd."],
+        publishers: [
+          "Pearl Abyss",
+          "Kakao Games",
+          "Kakao",
+          "GameNet",
+          "Koch Media",
+          "GameOn Co., Ltd.",
+        ],
         tags: ["Story-Rich", "World Events", "Level-scaling", "Large World"],
       },
     ]);
@@ -91,33 +98,35 @@ export default function GameGrid() {
 
   const tags = [];
   if (games.length > 0) {
-    games.forEach(game => {
+    games.forEach((game) => {
       try {
-        game.tags.forEach(tag => {
-          if (!tags.includes(tag)) tags.push(tag)
-        })
+        game.tags.forEach((tag) => {
+          if (!tags.includes(tag)) tags.push(tag);
+        });
       } catch (e) {
         console.log(e);
         return;
       }
-    })
+    });
   }
 
-  return (<>
-    <SearchBar tags={tags} />
-    <Grid 
-      container 
-      spacing={2} 
-      className={classes.root}
-      justifyContent='space-evenly'
-    >
-      {games.map((game) => {
-        return (
-          <Grid item align='flex-start' key={game.name}>
-            <GameCard game={game} />
-          </Grid>
-        );
-      })}
-    </Grid>
-  </>);
+  return (
+    <>
+      <SearchBar tags={tags} />
+      <Grid
+        container
+        spacing={2}
+        className={classes.root}
+        justifyContent="space-evenly"
+      >
+        {games.map((game) => {
+          return (
+            <Grid item align="flex-start" key={game.name}>
+              <GameCard game={game} />
+            </Grid>
+          );
+        })}
+      </Grid>
+    </>
+  );
 }
