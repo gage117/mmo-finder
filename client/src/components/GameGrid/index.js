@@ -102,7 +102,6 @@ export default function GameGrid() {
       }
     })
   }
-  console.log(tags)
 
   return (<>
     <SearchBar tags={tags} />
