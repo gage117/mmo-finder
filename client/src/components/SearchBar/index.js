@@ -4,13 +4,17 @@ import { TextField, Chip } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: '#3F51B5',
+    padding: '15px 0px',
     '& > *': {
       margin: theme.spacing(1),
-      width: '25ch',
     },
   },
   inputBackground: {
-      backgroundColor: '#7E88C1'
+      backgroundColor: '#7E88C1',
+      width: '25ch',
+  },
+  chipMargin: {
+      margin: '0 5px'
   }
 }));
 
@@ -23,7 +27,7 @@ export default function SearchBar({tags}) {
       <div>
         {tags.map(tag => {
             return (
-                <Chip label={tag} key={tag}/>
+                <Chip label={tag} key={tag} className={classes.chipMargin}/>
             )
         })}
       </div>
