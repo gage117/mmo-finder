@@ -114,7 +114,7 @@ export default function GameGrid() {
     >
       {games.map((game) => {
         return (
-          <Grid item align='flex-start'>
+          <Grid item align='flex-start' key={game.name}>
             <GameCard game={game} />
           </Grid>
         );
