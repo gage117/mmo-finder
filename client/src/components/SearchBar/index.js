@@ -25,10 +25,10 @@ export default function SearchBar({ tags }) {
 
   const handleChipClick = (e) => {
     activeTags.includes(e.target.innerText) ?
-      setActiveTags([e.target.innerText, ...activeTags])
-    : setActiveTags(activeTags.filter(tag => tag !== e.target.innerText))
+      setActiveTags(activeTags.filter(tag => tag !== e.target.innerText))
+    : setActiveTags([e.target.innerText, ...activeTags])
   };
-
+  
   return (
     <form className={classes.root} noValidate autoComplete="off">
       <TextField
