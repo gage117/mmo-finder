@@ -27,7 +27,8 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     height: '100px',
-    backgroundSize: '100%',
+    backgroundSize: 'contain',
+    backgroundColor: '#ddd',
     paddingTop: '56.25%', // 16:9
   },
   expand: {
