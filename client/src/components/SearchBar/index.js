@@ -19,13 +19,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchBar({ tags, activeTags, setActiveTags }) {
+export default function SearchBar({ tags, setFilteredGames }) {
   const classes = useStyles();
+  const [activeTags, setActiveTags] = useState([]);
 
   const handleChipClick = (e) => {
-    activeTags.includes(e.target.innerText) ?
+    if (activeTags.includes(e.target.innerText)) {
       setActiveTags(activeTags.filter(tag => tag !== e.target.innerText))
-    : setActiveTags([e.target.innerText, ...activeTags])
+      
+    } else {
+      setActiveTags([e.target.innerText, ...activeTags])
+    }
   };
 
   return (

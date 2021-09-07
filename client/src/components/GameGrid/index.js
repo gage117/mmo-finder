@@ -185,7 +185,7 @@ export default function GameGrid() {
 
   return (
     <>
-      <SearchBar tags={tags} activeTags={activeTags} setActiveTags={setActiveTags} />
+      <SearchBar tags={tags} setFilteredGames={setFilteredGames} />
       <Grid
         container
         spacing={2}
