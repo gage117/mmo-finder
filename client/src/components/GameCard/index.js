@@ -85,17 +85,17 @@ const generatePropertyValue = (value) => {
   return propertyValue;
 }
 
-const renderGameProperty = (property, value, classes) => {
+const renderGameProperty = (property, value, classes, idx) => {
   if ( property === 'name' || property === 'description' || property === 'logo' || property === 'genre' ) {
     return;
   }
 
   const propertyName = generatePropertyName(property);
   const propertyValue = generatePropertyValue(value);
-  return ( <>
+  return ( <div key={idx}>
     <Typography className={classes.propertyName} variant='h6'>{propertyName}</Typography>
     <Typography className={classes.propertyValue} paragraph>{propertyValue}</Typography>
-  </>)
+  </div>)
 }
 
 export default function GameCard({ game }) {
@@ -148,8 +148,8 @@ export default function GameCard({ game }) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent className={classes.paddingClear}>
-          {Object.entries(game).map(([key, value]) => {
-            return renderGameProperty(key, value, classes);
+          {Object.entries(game).map(([key, value], idx) => {
+            return renderGameProperty(key, value, classes, idx);
           })}
         </CardContent>
       </Collapse>
