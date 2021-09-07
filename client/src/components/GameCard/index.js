@@ -16,10 +16,17 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    marginTop: '20px',
     width: 345,
   },
+  cardBackgroundColor: {
+    backgroundColor: '#7E88C1'
+  },
+  description: {
+    backgroundColor: '#9299b7'
+  },
   media: {
-    height: 0,
+    height: '100px',
     backgroundSize: '100%',
     paddingTop: '56.25%', // 16:9
   },
@@ -33,6 +40,18 @@ const useStyles = makeStyles((theme) => ({
   expandOpen: {
     transform: 'rotate(180deg)',
   },
+  propertyName: {
+    backgroundColor: '#bbb',
+    paddingLeft: '10px'
+  },
+  propertyValue: {
+    backgroundColor: '#f0f0f0',
+    padding: '10px',
+    margin: '0'
+  },
+  paddingClear: {
+    padding: '0'
+  }
 }));
 
 const generatePropertyName = (key) => {
@@ -65,7 +84,7 @@ const generatePropertyValue = (value) => {
   return propertyValue;
 }
 
-const renderGameProperty = (property, value) => {
+const renderGameProperty = (property, value, classes) => {
   if ( property === 'name' || property === 'description' || property === 'logo' || property === 'genre' ) {
     return;
   }
@@ -73,8 +92,8 @@ const renderGameProperty = (property, value) => {
   const propertyName = generatePropertyName(property);
   const propertyValue = generatePropertyValue(value);
   return ( <>
-    <Typography paragraph>{propertyName}:</Typography>
-    <Typography paragraph>{propertyValue}</Typography>
+    <Typography className={classes.propertyName} variant='h6'>{propertyName}</Typography>
+    <Typography className={classes.propertyValue} paragraph>{propertyValue}</Typography>
   </>)
 }
 
@@ -89,6 +108,7 @@ export default function GameCard({ game }) {
   return (
     <Card className={classes.root}>
       <CardHeader
+        className={classes.cardBackgroundColor}
         action={
           <IconButton aria-label="settings">
             <MoreVertIcon />
@@ -102,12 +122,12 @@ export default function GameCard({ game }) {
         image={game.logo}
         title={`${game.name} logo`}
       />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
+      <CardContent className={classes.description}>
+        <Typography variant="body2" component="p">
           {game.description}
         </Typography>
       </CardContent>
-      <CardActions disableSpacing>
+      <CardActions disableSpacing className={classes.cardBackgroundColor}>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
@@ -126,9 +146,9 @@ export default function GameCard({ game }) {
         </IconButton>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
+        <CardContent className={classes.paddingClear}>
           {Object.entries(game).map(([key, value]) => {
-            return renderGameProperty(key, value);
+            return renderGameProperty(key, value, classes);
           })}
         </CardContent>
       </Collapse>
