@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AppContext } from "../../utils/AppContext";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Chip } from "@material-ui/core";
 
@@ -19,9 +20,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchBar({ tags, setFilteredGames }) {
+export default function SearchBar({ setFilteredGames }) {
+  const {tags, activeTags, setActiveTags} = useContext(AppContext);
   const classes = useStyles();
-  const [activeTags, setActiveTags] = useState([]);
 
   const handleChipClick = (e) => {
     if (activeTags.includes(e.target.innerText)) {

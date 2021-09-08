@@ -85,9 +85,24 @@ const AppProvider = ({children}) => {
     });
     setFilteredGames(filtered);
   }
+
+  const tags = [];
+  // ! Remove from defaultState when API is implemented
+  if (defaultState.length > 0) {
+    defaultState.forEach((game) => {
+      try {
+        game.tags.forEach((tag) => {
+          if (!tags.includes(tag)) tags.push(tag);
+        });
+      } catch (e) {
+        console.log(e);
+        return;
+      }
+    });
+  }
   
   return (
-      <AppContext.Provider value={{ filteredGames, activeTags, setActiveTags }}>
+      <AppContext.Provider value={{ filteredGames, activeTags, setActiveTags, tags }}>
           {children}
       </AppContext.Provider>
   )
