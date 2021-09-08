@@ -16,9 +16,13 @@ export default function GameGrid() {
   const {activeTags, games} = useContext(AppContext);
   const classes = useStyles();
 
-  const filteredGames = activeTags.length > 0 ? games.filter((game) => {
-    return game.tags.some((tag) => activeTags.includes(tag));
-  }) : games;
+  let filteredGames = [...games];
+  
+  if (activeTags.length > 0) {
+    filteredGames = filteredGames.filter((game) => {
+      return game.tags.some((tag) => activeTags.includes(tag));
+    });
+  }
 
   return (
     <Grid
