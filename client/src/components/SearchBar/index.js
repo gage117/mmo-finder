@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SearchBar() {
-  const {tags, activeTags, setActiveTags} = useContext(AppContext);
+  const {allTags, activeTags, setActiveTags} = useContext(AppContext);
   const classes = useStyles();
 
   const handleChipClick = (e) => {
@@ -42,7 +42,7 @@ export default function SearchBar() {
         variant="filled"
       />
       <div>
-        {tags.map((tag) => {
+        {allTags.map((tag) => {
           return (
             <Chip
               label={tag}
