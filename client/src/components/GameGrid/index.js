@@ -184,22 +184,19 @@ export default function GameGrid() {
   }
 
   return (
-    <>
-      <SearchBar tags={tags} setFilteredGames={setFilteredGames} />
-      <Grid
-        container
-        spacing={2}
-        className={classes.root}
-        justifyContent="space-evenly"
-      >
-        {filteredGames.map((game) => {
-          return (
-            <Grid item align="flex-start" key={game.name}>
-              <GameCard game={game} />
-            </Grid>
-          );
-        })}
-      </Grid>
-    </>
+    <Grid
+      container
+      spacing={2}
+      className={classes.root}
+      justifyContent="space-evenly"
+    >
+      {filteredGames.map((game) => {
+        return (
+          <Grid item align="flex-start" key={game.name}>
+            <GameCard game={game} />
+          </Grid>
+        );
+      })}
+    </Grid>
   );
 }
