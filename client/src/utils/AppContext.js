@@ -2,7 +2,7 @@ import { createContext, useState } from 'react';
 
 export const AppContext = createContext();
 
-const defaultState = [
+const games = [
   {
     name: "Guild Wars 2",
     description: "A pretty rad MMO",
@@ -19,7 +19,7 @@ const defaultState = [
       "Story-Rich",
       "Genre-bending",
       "World Events",
-      "Level Scaling",
+      "Level-scaling",
       "Expansive PvP",
     ],
   },
@@ -75,21 +75,32 @@ const defaultState = [
 ];
 
 const AppProvider = ({children}) => {
-  const [games, setGames] = useState(defaultState);
-  const [filteredGames, setFilteredGames] = useState(defaultState)
+  // const [games, setGames] = useState(defaultState);
+  // const [filteredGames, setFilteredGames] = useState(defaultState)
   const [activeTags, setActiveTags] = useState([]);
 
-  const handleFilter = () => {
-    const filtered = games.filter(game => {
-      return game.tags.some(tag => activeTags.includes(tag));
-    });
-    setFilteredGames(filtered);
+  // const filterGames = () => {
+  //   const filtered = defaultState.filter(game => {
+  //     return game.tags.some(tag => activeTags.includes(tag));
+  //   });
+  //   console.log(filtered);
+  //   setFilteredGames(filtered);
+  // }
+
+  const handleTagChange = (tag) => {
+    if (activeTags.includes(tag)) {
+      setActiveTags(activeTags.filter(activeTag => activeTag !== tag))
+      
+    } else {
+      setActiveTags([tag, ...activeTags])
+    }
+    // filterGames();
   }
 
   const allTags = [];
   // ! Remove from defaultState when API is implemented
-  if (defaultState.length > 0) {
-    defaultState.forEach((game) => {
+  if (games.length > 0) {
+    games.forEach((game) => {
       try {
         game.tags.forEach((tag) => {
           if (!allTags.includes(tag)) allTags.push(tag);
@@ -102,7 +113,7 @@ const AppProvider = ({children}) => {
   }
   
   return (
-      <AppContext.Provider value={{ filteredGames, activeTags, setActiveTags, allTags }}>
+      <AppContext.Provider value={{ games, activeTags, setActiveTags, allTags, handleTagChange }}>
           {children}
       </AppContext.Provider>
   )

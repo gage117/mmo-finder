@@ -13,8 +13,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function GameGrid() {
-  const {filteredGames} = useContext(AppContext);
+  const {activeTags, games} = useContext(AppContext);
   const classes = useStyles();
+
+  const filteredGames = activeTags.length > 0 ? games.filter((game) => {
+    return game.tags.some((tag) => activeTags.includes(tag));
+  }) : games;
 
   return (
     <Grid

@@ -21,17 +21,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SearchBar() {
-  const {allTags, activeTags, setActiveTags} = useContext(AppContext);
+  const {allTags, activeTags, handleTagChange} = useContext(AppContext);
   const classes = useStyles();
-
-  const handleChipClick = (e) => {
-    if (activeTags.includes(e.target.innerText)) {
-      setActiveTags(activeTags.filter(tag => tag !== e.target.innerText))
-      
-    } else {
-      setActiveTags([e.target.innerText, ...activeTags])
-    }
-  };
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
@@ -48,7 +39,7 @@ export default function SearchBar() {
               label={tag}
               key={tag}
               className={classes.chipMargin}
-              onClick={handleChipClick}
+              onClick={(e) => handleTagChange(e.currentTarget.innerText)}
               color={activeTags.includes(tag) ? 'primary' : 'default'}
             />
           );
