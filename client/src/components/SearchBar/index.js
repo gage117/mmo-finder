@@ -1,11 +1,11 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { AppContext } from "../../utils/AppContext";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Chip } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: "#3F51B5",
+    backgroundColor: "#293475",
     padding: "15px 0px",
     "& > *": {
       margin: theme.spacing(1),
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchBar({ setFilteredGames }) {
+export default function SearchBar() {
   const {tags, activeTags, setActiveTags} = useContext(AppContext);
   const classes = useStyles();
 
