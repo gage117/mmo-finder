@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { AppContext } from "../../utils/AppContext";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Chip } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: "#3F51B5",
+    backgroundColor: "#293475",
     padding: "15px 0px",
     "& > *": {
       margin: theme.spacing(1),
@@ -19,18 +20,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchBar({ tags, setFilteredGames }) {
+export default function SearchBar() {
+  const {allTags, activeTags, handleTagChange, searchInput, handleSearchChange} = useContext(AppContext);
   const classes = useStyles();
-  const [activeTags, setActiveTags] = useState([]);
-
-  const handleChipClick = (e) => {
-    if (activeTags.includes(e.target.innerText)) {
-      setActiveTags(activeTags.filter(tag => tag !== e.target.innerText))
-      
-    } else {
-      setActiveTags([e.target.innerText, ...activeTags])
-    }
-  };
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
@@ -39,15 +31,17 @@ export default function SearchBar({ tags, setFilteredGames }) {
         id="outlined-basic"
         label="Game Title"
         variant="filled"
+        value={searchInput}
+        onChange={e => handleSearchChange(e.target.value)}
       />
       <div>
-        {tags.map((tag) => {
+        {allTags.map((tag) => {
           return (
             <Chip
               label={tag}
               key={tag}
               className={classes.chipMargin}
-              onClick={handleChipClick}
+              onClick={(e) => handleTagChange(e.currentTarget.innerText)}
               color={activeTags.includes(tag) ? 'primary' : 'default'}
             />
           );

@@ -1,8 +1,11 @@
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import AppContext from './utils/AppContext';
 
 ReactDOM.render(
-  <App />,
+  <AppContext >
+    <App />
+  </AppContext>,
   document.getElementById('root')
 );
