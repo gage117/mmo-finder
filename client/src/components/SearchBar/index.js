@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SearchBar() {
-  const {allTags, activeTags, handleTagChange} = useContext(AppContext);
+  const {allTags, activeTags, handleTagChange, searchInput, handleSearchChange} = useContext(AppContext);
   const classes = useStyles();
 
   return (
@@ -31,6 +31,8 @@ export default function SearchBar() {
         id="outlined-basic"
         label="Game Title"
         variant="filled"
+        value={searchInput}
+        onChange={e => handleSearchChange(e.target.value)}
       />
       <div>
         {allTags.map((tag) => {
