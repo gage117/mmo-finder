@@ -43,7 +43,7 @@ export default function NavBar({setOpen}) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Foodroid
+            MMO Finder
           </Typography>
           {auth && (
             <div>
