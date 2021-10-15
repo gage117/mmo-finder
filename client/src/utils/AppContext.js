@@ -75,27 +75,8 @@ const games = [
 ];
 
 const AppProvider = ({children}) => {
-  // const [games, setGames] = useState(defaultState);
-  // const [filteredGames, setFilteredGames] = useState(defaultState)
   const [activeTags, setActiveTags] = useState([]);
-
-  // const filterGames = () => {
-  //   const filtered = defaultState.filter(game => {
-  //     return game.tags.some(tag => activeTags.includes(tag));
-  //   });
-  //   console.log(filtered);
-  //   setFilteredGames(filtered);
-  // }
-
-  const handleTagChange = (tag) => {
-    if (activeTags.includes(tag)) {
-      setActiveTags(activeTags.filter(activeTag => activeTag !== tag))
-      
-    } else {
-      setActiveTags([tag, ...activeTags])
-    }
-    // filterGames();
-  }
+  const [searchInput, setSearchInput] = useState("");
 
   const allTags = [];
   // ! Remove from defaultState when API is implemented
@@ -111,9 +92,19 @@ const AppProvider = ({children}) => {
       }
     });
   }
+
+  const handleSearchChange = (input) => {
+    setSearchInput(input);
+  }
+
+  const handleTagChange = (tag) => {
+    activeTags.includes(tag) ?
+      setActiveTags(activeTags.filter(activeTag => activeTag !== tag))
+     :setActiveTags([tag, ...activeTags]);
+  }
   
   return (
-      <AppContext.Provider value={{ games, activeTags, setActiveTags, allTags, handleTagChange }}>
+      <AppContext.Provider value={{ games, activeTags, handleTagChange, allTags, searchInput, handleSearchChange }}>
           {children}
       </AppContext.Provider>
   )
