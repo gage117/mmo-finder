@@ -13,14 +13,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function GameGrid() {
-  const {activeTags, games} = useContext(AppContext);
+  const { games, activeTags, searchInput } = useContext(AppContext);
   const classes = useStyles();
 
   let filteredGames = [...games];
   
   if (activeTags.length > 0) {
     filteredGames = filteredGames.filter((game) => {
-      return game.tags.some((tag) => activeTags.includes(tag));
+      return activeTags.every((tag) => game.tags.includes(tag));
+    });
+  }
+
+  if (searchInput) {
+    filteredGames = filteredGames.filter((game) => {
+      return game.name.toLowerCase().includes(searchInput.toLowerCase());
     });
   }
 
