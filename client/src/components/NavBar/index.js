@@ -1,27 +1,32 @@
 import {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import {AppBar,
+        Toolbar,
+        Typography,
+        Link,
+        IconButton,
+        Menu,
+        MenuItem,
+        withTheme
+} from '@material-ui/core';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  menuButton: {
+  title: {
     marginRight: theme.spacing(2),
   },
-  title: {
+  navLinks: {
     flexGrow: 1,
   },
+  navLink: {
+    color: "white"
+  }
 }));
 
-export default function NavBar({setOpen}) {
+export default function NavBar() {
   const classes = useStyles();
   const [auth, setAuth] = useState(true);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -39,12 +44,14 @@ export default function NavBar({setOpen}) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} onClick={() => setOpen(true)} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h5" className={classes.title}>
             MMO Finder
           </Typography>
+          <div className={classes.navLinks}>
+            <Link href="/contribute-data" className={classes.navLink}>
+              Contribute Data
+            </Link>
+          </div>
           {auth && (
             <div>
               <IconButton
