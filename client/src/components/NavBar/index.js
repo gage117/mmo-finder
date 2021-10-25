@@ -44,9 +44,11 @@ export default function NavBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h5" className={classes.title}>
-            MMO Finder
-          </Typography>
+          <Link href="/" className={classes.navLink}>
+            <Typography variant="h5" className={classes.title}>
+              MMO Finder
+            </Typography>
+          </Link>
           <div className={classes.navLinks}>
             <Link href="/contribute-data" className={classes.navLink}>
               Contribute Data
