@@ -1,5 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const axios = require("axios");
+require("dotenv").config();
 
 const PORT = process.env.PORT || 3001;
 
@@ -9,6 +11,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static("public"));
+
+axios.post(`https://id.twitch.tv/oauth2/token?client_id=${process.env.IGDB_CLIENT_ID}&client_secret=${process.env.IGDB_CLIENT_SECRET}&grant_type=client_credentials`)
+	.then(res => {
+		console.log(res.data);
+		})
+		.catch(err => {
+			console.log(err);
+		});
 
 const config = {
 	useNewUrlParser: true,
