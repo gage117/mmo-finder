@@ -16,19 +16,18 @@ axios.post(`https://id.twitch.tv/oauth2/token?client_id=${process.env.IGDB_CLIEN
 	.then(res => {
 		console.log(res.data);
 		console.log(process.env.IGDB_CLIENT_ID)
-		// axios.post("https://api.igdb.com/v4/games", {
-		// 	method: 'POST',
-		// 	headers: {
-		// 			Accept: 'application/json',
-		// 			'Client-ID': process.env.IGDB_CLIENT_ID,
-		// 			Authorization: `Bearer ${res.data.access_token}`,
-		// 	},
-		// 	data: "fields id, category, cover.url, game_modes.name, genres.name, name, platforms.name, summary, url; where game_modes = [5];"
-		// }).then(res => {
-		// 	console.log(res.data);
-		// }).catch(err => {
-		// 	console.log(err);
-		// })
+		axios.post("https://api.igdb.com/v4/games", {
+			headers: {
+					Accept: 'application/json',
+					'Client-ID': process.env.IGDB_CLIENT_ID,
+					Authorization: `Bearer ${res.data.access_token}`,
+			},
+			data: "fields *;"
+		}).then(res => {
+			console.log(res.data);
+		}).catch(err => {
+			console.log(err);
+		})
 	})
 	.catch(err => {
 		console.log(err);
