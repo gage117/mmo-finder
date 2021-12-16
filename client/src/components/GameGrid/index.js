@@ -33,7 +33,6 @@ export default function GameGrid() {
   return (
     <Grid
       container
-      spacing={2}
       className={classes.root}
       justifyContent="space-evenly"
     >
