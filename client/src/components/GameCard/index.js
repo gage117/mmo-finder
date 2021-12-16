@@ -43,16 +43,22 @@ const useStyles = makeStyles((theme) => ({
   },
   propertyName: {
     backgroundColor: '#bbb',
-    paddingLeft: '10px'
+    paddingLeft: '5px'
+    
   },
   propertyValue: {
     backgroundColor: '#f0f0f0',
     padding: '10px',
     margin: '0'
+
   },
   paddingClear: {
+    display: 'flex',
+    flexDirection: 'column',
+    flexWrap: 'nowrap',
     padding: '0'
-  }
+
+  },
 }));
 
 const generatePropertyName = (key) => {
