@@ -12,6 +12,16 @@ code {
     monospace;
 }
 
-CardContent div{
-  background-color: red;
+.MuiCardContent-root div {
+  width: 45%;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.MuiCardContent-root div:nth-child(6) {
+  width: 93%;
+}
+
+.MuiCardContent-root div:nth-child(1) {
+  width: 93%;
 }

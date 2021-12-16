@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import "../../index.css";
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -43,27 +44,40 @@ const useStyles = makeStyles((theme) => ({
   },
   propertyName: {
     backgroundColor: '#bbb',
-    paddingLeft: '5px'
+    paddingLeft: '5px',
+    borderTopRightRadius: '10px',
+    borderTopLeftRadius: '10px'
+    
     
   },
   propertyValue: {
     backgroundColor: '#f0f0f0',
     padding: '10px',
-    margin: '0'
+    margin: '0',
+    borderBottomLeftRadius: '10px',
+    borderBottomRightRadius: '10px',
+
 
   },
   paddingClear: {
     display: 'flex',
-    flexDirection: 'column',
-    flexWrap: 'nowrap',
-    padding: '0'
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    flexWrap: 'wrap',
+    padding: '0',
+    paddingTop: '15px',
+    alignSelf: 'flex-end'
 
   },
+  propertyTags: {
+    color: 'red'
+  }
 }));
 
 const generatePropertyName = (key) => {
   if (key === "pvp") return "PvP"
   if (key === "pve") return "PvE"
+  if (key === "tags") return "Tags"
   const capitalize = s => (s && s[0].toUpperCase() + s.slice(1)) || "";
 
   let propertyName = "";
@@ -90,8 +104,17 @@ const generatePropertyValue = (value) => {
 
   return propertyValue;
 }
+// ---------------------
+const generatePropertyTags = (key) => {
+  if (key === "tags") return
 
-const renderGameProperty = (property, value, classes, idx) => {
+  let propertyTags = "";
+
+  return propertyTags;
+}
+// ----------------------
+
+const renderGameProperty = (property, value, classes, idx, tags) => {
   if ( property === 'name' || property === 'description' || property === 'logo' || property === 'genre' ) {
     return;
   }
@@ -101,8 +124,24 @@ const renderGameProperty = (property, value, classes, idx) => {
   return ( <div key={idx}>
     <Typography className={classes.propertyName} variant='h6'>{propertyName}</Typography>
     <Typography className={classes.propertyValue} paragraph>{propertyValue}</Typography>
+    {/* <Typography className={classes.propertyTags} paragraph>{propertyTags}</Typography> */}
+  </div>)
+
+}
+
+// ----------------------
+const renderGameTags = (property, tags, classes) => {
+  if ( property === 'tags') {
+    // return <div> this shit better work</div>
+  }
+  
+  const propertyTags = generatePropertyTags(property);
+  return ( <div key={tags}>
+    <Typography className={classes.propertyTags} variant='h6'>{propertyTags}</Typography>
   </div>)
 }
+
+// ----------------------
 
 export default function GameCard({ game }) {
   const classes = useStyles();
