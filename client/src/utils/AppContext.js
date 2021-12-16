@@ -2,13 +2,15 @@ import { createContext, useState } from 'react';
 
 export const AppContext = createContext();
 
+const dateFormat = { month: 'long', day: 'numeric', year: 'numeric' };
+
 const games = [
   {
     name: "Guild Wars 2",
     description: "A pretty rad MMO",
     logo: "https://res.cloudinary.com/gageeide/image/upload/v1630816875/mmo-finder/GW2Logo.png",
     genre: "MMORPG",
-    release_date: new Date("August 28, 2012"),
+    release_date: new Date("August 28, 2021").toLocaleDateString("en-US", dateFormat),
     pay_model: "Buy To Play",
     platforms: ["PC"],
     pve: true,
@@ -28,7 +30,7 @@ const games = [
     description: "The Big Cheese",
     logo: "https://res.cloudinary.com/gageeide/image/upload/v1630817482/mmo-finder/wowLogo.png",
     genre: "MMORPG",
-    release_date: new Date("November 23, 2004"),
+    release_date: new Date("November 23, 2004").toLocaleDateString("en-US", dateFormat),
     pay_model: "Subscription",
     platforms: ["PC"],
     pve: true,
@@ -42,7 +44,7 @@ const games = [
     description: "A fancy story-based RPG",
     logo: "https://res.cloudinary.com/gageeide/image/upload/v1630817874/mmo-finder/tesoLogo.jpg",
     genre: "MMORPG",
-    release_date: new Date("June 1, 2021"),
+    release_date: new Date("June 1, 2021").toLocaleDateString("en-US", dateFormat),
     pay_model: "Buy to Play",
     platforms: ["PC"],
     pve: true,
@@ -56,7 +58,7 @@ const games = [
     description: "2 extensive 4 me",
     logo: "https://res.cloudinary.com/gageeide/image/upload/v1630978292/mmo-finder/BDO_CoverArt.png",
     genre: "MMORPG",
-    release_date: new Date("December 1, 2014"),
+    release_date: new Date("December 1, 2014").toLocaleDateString("en-US", dateFormat),
     pay_model: "Buy to Play",
     platforms: ["PC"],
     pve: true,
