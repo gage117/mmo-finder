@@ -62,7 +62,8 @@ const useStyles = makeStyles((theme) => ({
   paddingClear: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
+    justifyContent: 'center',
+    gap: '10px',
     flexWrap: 'wrap',
     padding: '0',
     paddingTop: '15px',
