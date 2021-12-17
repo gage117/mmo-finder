@@ -14,18 +14,19 @@ app.use(express.static("public"));
 
 axios.post(`https://id.twitch.tv/oauth2/token?client_id=${process.env.IGDB_CLIENT_ID}&client_secret=${process.env.IGDB_CLIENT_SECRET}&grant_type=client_credentials`)
 	.then(res => {
-		console.log(res.data);
-		console.log(process.env.IGDB_CLIENT_ID)
-		axios.post("https://api.igdb.com/v4/games", {
+		axios({ // axios.post not working with this request, Need to use object with URL and method properties instead to get an authorized response
+			method: "POST",
+			url: "https://api.igdb.com/v4/games",
 			headers: {
-					Accept: 'application/json',
 					'Client-ID': process.env.IGDB_CLIENT_ID,
 					Authorization: `Bearer ${res.data.access_token}`,
 			},
-			data: "fields *;"
-		}).then(res => {
+			data: "fields *, keywords.name; where game_modes = [5];"
+		})
+		.then(res => {
 			console.log(res.data);
-		}).catch(err => {
+		})
+		.catch(err => {
 			console.log(err);
 		})
 	})
