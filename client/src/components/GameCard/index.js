@@ -9,6 +9,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
+import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
@@ -164,11 +165,13 @@ export default function GameCard({ game }) {
         title={game.name}
         subheader={game.genre}
       />
-      <CardMedia
-        className={classes.media}
-        image={game.logo}
-        title={`${game.name} logo`}
-      />
+      <Link href={`/${game._id}`}>
+        <CardMedia
+          className={classes.media}
+          image={game.logo}
+          title={`${game.name} logo`}
+        />
+      </Link>
       <CardContent className={classes.description}>
         <Typography variant="body2" component="p">
           {game.description}
