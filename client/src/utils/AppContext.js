@@ -9,10 +9,7 @@ const AppProvider = ({children}) => {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
-    API.get("/mmo").then(res => {
-      console.log("res: ", res.data);
-      setGames(res.data);
-    });
+    API.get("/mmo").then(res => setGames(res.data));
   }, [])
 
   const allTags = [];
