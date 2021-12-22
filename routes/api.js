@@ -17,6 +17,16 @@ router.get("/api/mmo", (req, res) => {
     });
 });
 
+router.get("/api/mmo/:id", (req, res) => {
+  Mmo.findById(req.params.id)
+    .then(dbMmo => {
+      res.json(dbMmo);
+    })
+    .catch(err => {
+      res.status(400).json(err);
+    });
+});
+
 router.post("/api/mmo", ({ body }, res) => {
   Mmo.create(body)
     .then(dbMmo => {
