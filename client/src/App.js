@@ -1,6 +1,7 @@
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import NavBar from './components/NavBar';
 import MainSearch from './pages/MainSearch';
+import GamePage from './pages/GamePage';
 import ContributeData from './pages/ContributeData';
 
 function App() {
@@ -8,14 +9,11 @@ function App() {
     <Router>
       <div className="App">
         <NavBar />
-        <Switch>
-          <Route exact path="/">
-            <MainSearch />
-          </Route>
-          <Route path="/contribute-data">
-            <ContributeData />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path="/" element={<MainSearch />} />
+          <Route path="/:game" element={<GamePage />} />
+          <Route path="/contribute-data" element={<ContributeData />} />
+        </Routes>
       </div>
     </Router>
   );
