@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const IGDB_api = require("./igdb-api");
+require("./igdb-api");
 require("dotenv").config();
 
 const PORT = process.env.PORT || 3001;
