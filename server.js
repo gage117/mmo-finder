@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
-require("./igdb-api");
+const { initializeIGDBapi } = require("./igdb-api");
+const { init } = require("./models/mmo");
 require("dotenv").config();
 
 const PORT = process.env.PORT || 3001;
@@ -31,6 +32,8 @@ app.use(function(req, res, next) {
 // routes
 app.use(require("./routes/api.js"));
 
-app.listen(PORT, () => {
-  console.log(`App running on port ${PORT}!`);
+initializeIGDBapi().then(() => {
+  app.listen(PORT, () => {
+    console.log(`App running on port ${PORT}!`);
+  });
 });
