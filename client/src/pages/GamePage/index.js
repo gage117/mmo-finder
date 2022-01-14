@@ -53,7 +53,7 @@ export default function GamePage() {
       <Grid container direction='row'>
         {gameData.ourData.tags.map(tag => (
           <Grid item key={tag}>
-            <Chip variant="outlined" color="primary" size="small" label={tag} className={classes.chip} />
+            <Chip variant="outlined" color="primary" size="medium" label={tag} className={classes.chip} />
           </Grid>
         ))}
       </Grid>
